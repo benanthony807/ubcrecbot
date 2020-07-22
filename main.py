@@ -18,6 +18,7 @@ class UBCRecBot:
 
     def login(self):
         # go to website
+        # self.driver.get("https://ubc.perfectmind.com/24063/Clients/BookMe4BookingPages/Classes?widgetId=15f6af07-39c5-473e-b053-96653f77a406&calendarId=177b4c03-533a-4d92-8b47-6dce1d39a5ae&singleCalendarWidget=False")
         self.driver.get(
             "https://ubc.perfectmind.com/24063/Clients/BookMe4BookingPages/Classes?calendarId=3f71aec7-92b6-423d-8d3c-6d111c267a32&widgetID=15f6af07-39c5-473e-b053-96653f77a406")
         # click login button
@@ -31,7 +32,7 @@ class UBCRecBot:
         self.driver.find_element_by_xpath("//button[@type='submit']").click()
 
     def wait_then_click(self, xpath):
-        wait = WebDriverWait(self.driver, 20)
+        wait = WebDriverWait(self.driver, 20000)
         wait.until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
 
     def check_timeslots(self):
@@ -45,7 +46,7 @@ class UBCRecBot:
         # click next button
         self.wait_then_click("//a[@title='Next']")
         # click next again
-        self.wait_then_click("//a[@title='Next']")
+        self.wait_then_click("//a[@title='Add to Cart']")
         # click checkout
         self.wait_then_click("//span[@id='checkoutButton']")
 
